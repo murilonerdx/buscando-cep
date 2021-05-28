@@ -25,21 +25,6 @@ public class Cep {
         this.siafi = siafi;
     }
 
-    public Cep() {
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getLogradouro() {
-        return logradouro;
-    }
-
     public String getIbge() {
         return ibge;
     }
@@ -62,6 +47,21 @@ public class Cep {
 
     public void setSiafi(String siafi) {
         this.siafi = siafi;
+    }
+
+    public Cep() {
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
     }
 
     public void setLogradouro(String logradouro) {

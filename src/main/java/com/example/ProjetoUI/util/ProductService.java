@@ -26,7 +26,7 @@ public class ProductService {
 
     @PostConstruct
     public void init() {
-        ceps.add(new Cep("01001-000", "Praça da Sé", "lado ímpar", "Sé", "São Paulo", "SP", "11", "", "", ""));
+        ceps.add(new Cep("01001-000", "Praça da Sé", "lado ímpar", "Sé", "São Paulo", "SP", "11","","",""));
     }
 
     public List<Cep> getCeps() {
