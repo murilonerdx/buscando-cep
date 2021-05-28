@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+<ui:composition template="_template.xhtml">
+    <ui:define name="header"></ui:define>
+    <ui:define name="content">
+
+        <h:form>
+            <p:card class="form-card">
+                <f:facet name="title"> Digite o seu CEP </f:facet>
+                <div class="ui-fluid">
+                    <div class="p-field p-grid" style="width: 250px">
+                        <label for="cep" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">CEP</label>
+                        <div class="p-col-12 p-md-10">
+                            <p:inputMask id="cep" value="#{maskView.cep}" mask="99999-999" validateMask="true"/>
+                            <p:commandButton icon="pi pi-check" style="margin-top: 20px; margin-bottom: 50px;"
+                                             value="Buscar" action="#{apiAccess.save}" update="@form">
+                            </p:commandButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <p:dataTable id="ceps" var="cep" value="#{dtBasicView.ceps}">
+                        <f:facet name="header">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <div>
+                                    <p:commandButton id="toggler" type="button" value="Columns"
+                                                     icon="pi pi-align-justify"/>
+                                    <p:columnToggler datasource="ceps" trigger="toggler"/>
+                                </div>
+                            </div>
+                        </f:facet>
+
+                        <p:column headerText="cep">
+                            <h:outputText value="#{cep.cep}"/>
+                        </p:column>
+
+                        <p:column headerText="logradouro">
+                            <h:outputText value="#{cep.logradouro}"/>
+                        </p:column>
+
+                        <p:column headerText="bairro">
+                            <h:outputText value="#{cep.bairro}"/>
+                        </p:column>
+
+                        <p:column headerText="localidade">
+                            <h:outputText value="#{cep.localidade}"/>
+                        </p:column>
+
+                        <p:column headerText="ddd">
+                            <h:outputText value="#{cep.ddd}"/>
+                        </p:column>
+
+                        <p:column headerText="uf">
+                            <h:outputText value="#{cep.uf}">
+                                <f:convertNumber type="currency" currencySymbol="$"/>
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </p:card>
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>
+
+</html>
